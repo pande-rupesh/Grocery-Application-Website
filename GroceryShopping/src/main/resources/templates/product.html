@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{navbar::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+
+</head>
+<body>
+	<section>
+		<!--  <div class="container my-5">
+    <div class="row">
+
+
+       LEFT: Subcategories 
+      <div class="col-md-3">
+        <div class="sidebar">
+          <h5 class="mb-3">Sub Categories</h5>
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Fruits</a></li>
+            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Vegetables</a></li>
+            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Dairy Products</a></li>
+            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Snacks</a></li>
+            <li class="list-group-item"><a href="#" class="text-decoration-none text-dark">Beverages</a></li>
+          </ul>
+        </div>
+      </div>
+
+       RIGHT: Products Section 
+      <div class="col-md-9">
+        <!-- Feature / Sort Section 
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+          <h4 class="mb-2 mb-md-0">All Products</h4>
+          <select class="form-select w-auto">
+            <option selected>Sort by</option>
+            <option value="1">Price: Low to High</option>
+            <option value="2">Price: High to Low</option>
+            <option value="3">Newest First</option>
+          </select>
+        </div>
+
+         Product Grid 
+        <div class="row g-4">
+          <div class="col-sm-6 col-md-4">
+            <div class="product-card">
+              <img src="/images/apple.jpg" alt="Apple" class="img-fluid product-img">
+              <div class="p-3">
+                <h6 class="fw-bold mb-1">Fresh Apples</h6>
+                <p class="text-success fw-semibold mb-2">₹120 / kg</p>
+                <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4">
+            <div class="product-card">
+              <img src="/images/banana.jpg" alt="Banana" class="img-fluid product-img">
+              <div class="p-3">
+                <h6 class="fw-bold mb-1">Organic Bananas</h6>
+                <p class="text-success fw-semibold mb-2">₹60 / dozen</p>
+                <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-md-4">
+            <div class="product-card">
+              <img src="/images/milk.jpg" alt="Milk" class="img-fluid product-img">
+              <div class="p-3">
+                <h6 class="fw-bold mb-1">Fresh Milk</h6>
+                <p class="text-success fw-semibold mb-2">₹45 / litre</p>
+                <button class="btn btn-sm btn-success w-100">Add to Cart</button>
+              </div>
+            </div>
+          </div>
+
+         Add more products as needed 
+        </div>
+      </div>
+    </div>
+  </div>-->
+
+
+
+
+		<div
+			class="d-flex justify-content-center align-items-center flex-wrap gap-1 mt-5  heading">
+			<h4 class="mb-0">
+				<a href="/" class="text-decoration-none text-danger">Home /</a>
+			</h4>
+			<h4 class="mb-0">Dal Atta Rice</h4>
+		</div>
+
+
+		<div class="container-fluid mt-5">
+			<div class="row">
+				<div class="col-md-2 p-0 subcatogary">
+					<h5 class="mt-2 mb-3 text-center">Sub Categories</h5>
+					<div class="list-group">
+						<ul class="list-group">
+
+							<!-- Dal Category -->
+							<li class="list-group-item text-center text-danger fw-bold">Dal
+								<ul class="list-group list-group-flush ms-3 mt-3">
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Chana Dal</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Tur Dal</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Moong Dal</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Udad Dal</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Masoor Dal</a></li>
+								</ul>
+
+							</li>
+
+							<!-- Atta Category -->
+							<li class="list-group-item text-center text-danger fw-bold">Atta
+								<ul class="list-group list-group-flush ms-3 mt-3">
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Wheat Atta</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Maida</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Multigrain Atta</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Jawari Atta</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Bajri Atta</a></li>
+								</ul>
+							</li>
+
+							<!-- Rice Category -->
+							<li class="list-group-item text-center text-danger fw-bold">Rice
+								<ul class="list-group list-group-flush ms-3 mt-3">
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Basmati Rice</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Sona Masoori</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Brown Rice</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Kolam Rice</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Indrayani Rice</a></li>
+									<li class="list-group-item py-1"><a href="#"
+										class="text-decoration-none text-dark">Biryani Rice</a></li>
+								</ul>
+							</li>
+
+						</ul>
+					</div>
+				</div>
+
+
+
+				<div class="col-md-10 p-0">
+					<!-- Inner row for proper grid structure -->
+					<div class="row">
+						<div class="col-12">
+							<!-- Feature / Sort Section -->
+							<div
+								class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+								<h4 class="mb-2 mb-md-0 ms-2">All Products</h4>
+								<select class="form-select w-auto">
+									<option selected>Sort by</option>
+									<option value="1">Price: Low to High</option>
+									<option value="2">Price: High to Low</option>
+									<option value="3">Newest First</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<!-- Product grid -->
+					<div class=" ms-2 row g-4">
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Chana Dal"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Fresh Chana Dal</h6>
+									<p class="text-success fw-semibold mb-2">₹120 / kg</p>
+									<a href="/productDetails" class="btn btn-sm btn-success w-100">
+										Add to Cart </a>
+								</div>
+							</div>
+						</div>
+
+						<!-- Repeat other product cards -->
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- Repeat other product cards -->
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<!-- Repeat other product cards -->
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+
+						<!-- Repeat other product cards -->
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<a href="/productDetails" class="btn btn-sm btn-success w-100">
+										Add to Cart </a>
+								</div>
+							</div>
+						</div>
+
+
+
+						<!-- Repeat other product cards -->
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+							<div class="product-card w-100">
+								<img src="img/product/chanadal.jpg" alt="Other Product"
+									class="product-img img-fluid">
+								<div class="product-details text-center">
+									<h6 class="fw-bold mb-1">Other Product</h6>
+									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
+									<button class="btn btn-sm btn-success w-100">Add to
+										Cart</button>
+								</div>
+							</div>
+						</div>
+						<!-- Add more products here -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

@@ -1,0 +1,48 @@
+@charset "UTF-8";
+
+
+.card {
+	width: 350px;
+	height: 550px;
+	display: flex;
+	border-radius: 30px;
+	box-shadow: 0 6px 12px purple;
+	background-color: white;
+	color: white;
+	margin: 50px auto;
+	align-items: center;
+}
+
+.email {
+	border: 2px solid purple; /* red border */
+	border-radius: 15px; /* optional: rounded corners */
+	padding: 10px; /* optional: adjust inner spacing */
+}
+
+.email:focus {
+	border-color: purple; /* border color when input is focused */
+	box-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* subtle glow */
+	outline: none; /* remove default outline */
+}
+
+.btn-custom {
+	background-color: purple;
+	color: white;
+	border: none; /* optional: remove border */
+	border-radius: 15px; /* optional: rounded corners */
+	margin-top: 10px;
+}
+
+.btn-custom:hover {
+	background-color: darkviolet; /* hover effect */
+}
+
+h3 {
+	color: purple;
+	margin-top: 40px;
+	font-size: 20px;
+}
+
+h3 a {
+	color: red;
+}

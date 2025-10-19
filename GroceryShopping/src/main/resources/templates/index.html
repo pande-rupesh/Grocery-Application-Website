@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{navbar::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+
+</head>
+<body>
+	<section class="index-page">
+		<div class="hero-section"></div>
+		<div class="category-section">
+			<h2>Shop by Category</h2>
+			<div class="category-container">
+
+				
+				<div class="category-card">
+					<a href="/product" style="text-decoration: none; color: inherit;">
+						<img src="img/index/Dal_atta_Rice.jpg" alt="Atta, Rice & Dal">
+						<h3>Atta, Rice & Dal</h3>
+					</a>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/oil and ghee.jpg" alt="Vegetables">
+					<h3>Oil & Ghee</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/Tea.jpg" alt="Dairy">
+					<h3>Tea,Coffee & Beverages</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/Dry_Fruits.jpg" alt="Beverages">
+					<h3>Dry Fruits</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/msala2.jpg" alt="Snacks">
+					<h3>Masala,Spices& Salt</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/souses.jpg" alt="Snacks">
+					<h3>Sauces & Spreads</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/vegitable.jpg" alt="Snacks">
+					<h3>Vegetable</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/vegetable.jpg" alt="Snacks">
+					<h3>Fruits</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/instant_food.jpg" alt="Snacks">
+					<h3>Instant Food</h3>
+				</div>
+
+				<div class="category-card">
+					<img src="img/index/festivle.jpg" alt="Snacks">
+					<h3>Festival Specials</h3>
+				</div>
+
+			</div>
+		</div>
+
+		<div class="brands">
+			<h2>Our Most Loved Brands</h2>
+			<ul>
+				<li><img alt="" src="img/index/brand1.jpg"></li>
+				<li><img alt="" src="img/index/brand2.jpg"></li>
+				<li><img alt="" src="img/index/brand3.jpg"></li>
+				<li><img alt="" src="img/index/brand4.jpg"></li>
+				<li><img alt="" src="img/index/brand5.jpg"></li>
+				<li><img alt="" src="img/index/brand6.jpg"></li>
+				<li><img alt="" src="img/index/brand7.jpg"></li>
+			</ul>
+		</div>
+
+		<div class="farm"></div>
+		<div class="farm2">
+			<h2>Nature’s Best, Delivered Fresh</h2>
+			<div class="farm-images">
+				<img src="img/index/f1.jpg" alt="Fresh Vegetables"> <img
+					src="img/index/f2.jpg" alt="Fresh Fruits"> <img
+					src="img/index/f3.jpg" alt="Organic Produce">
+			</div>
+		</div>
+
+
+	</section>
+</body>
+</html>

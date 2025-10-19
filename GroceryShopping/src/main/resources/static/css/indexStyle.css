@@ -1,0 +1,139 @@
+@charset "UTF-8";
+
+/* background only for index page */
+.index-page {
+	background-color: white;
+	min-height: 100vh; /* cover full screen height */
+}
+
+.hero-section {
+	background-image: url("/img/index/hero_img4.jpg");
+	height: 420px;
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: full;
+	margin: 20px;
+	border-radius: 15px;
+}
+
+.category-section {
+	padding: 20px 20px;
+	text-align: center;
+	background: #fff;
+}
+
+.category-section h2 {
+	font-size: 2rem;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+/*
+for six boxes in category
+.category-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 30px;
+	max-width: 1200px;
+	margin:  auto;
+}*/
+
+.category-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  gap: 30px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.category-card {
+	width: 180px; /* fixed width */
+	height: 260px; /* fixed height */
+	background: #f1f1f1;
+	border-radius: 15px;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; /* keeps content centered */
+	transition: transform 0.3s ease, box-shadow 0.4s ease;
+	cursor: pointer;
+	margin: 0 auto; /* keeps them centered if grid column > box width */
+}
+
+.category-card:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-card img {
+	width: 135px;
+	height: 135px;
+	object-fit: contain;
+	margin-bottom: 10px;
+}
+
+.category-card h3 {
+	font-size: 1.1rem;
+	color: #333;
+	margin: 0;
+}
+
+.brands {
+  background-color: #fff;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.20);
+  border-radius: 20px;
+  height: 270px;
+  padding: 20px 30px;  /* top/bottom 20px, left/right 30px */
+  margin: 20px;
+  box-sizing: border-box; /* include padding in height */
+}
+
+.brands h2 {
+	font-size: 1.7rem;
+	color: #333;
+	margin-left: 30px;
+	margin-top: 5px;
+}
+
+.brands ul{
+	list-style: none;
+    display: flex;
+    padding: 20px;
+    display: flex;           /* center brand logos/text */
+    align-items: center;     /* vertical centering */
+    justify-content: center; /* horizontal centering */
+    gap:30px;
+}
+
+.brands ul li img{
+	height: 150px;
+	width: 135px;
+}
+
+.brands ul li img:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+	border-radius: 40px;
+}
+
+.farm{
+	height: 230px;
+	background-image:url("/img/index/farm.jpg");
+	margin:20px;
+	border-radius: 20px;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.farm2{
+	text-align: center;
+	color: green;
+}
+.farm-images img{
+	width: 395px;
+	height: 270px;
+	border-radius: 20px;
+	margin: 10px;
+}

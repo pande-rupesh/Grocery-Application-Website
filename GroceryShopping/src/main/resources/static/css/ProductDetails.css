@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+
+.product-img {
+	width: 100%;
+	object-fit: cover; /* Keeps image ratio without distortion */
+	border-radius: 10px;
+	height:100%;
+}
+
+.price {
+	font-size: 1.5rem;
+	color: #28a745;
+	font-weight: bold;
+}
+
+.btn-buy {
+	background-color: #ff6f00;
+	border: none;
+}
+
+.btn-buy:hover {
+	background-color: #e65c00;
+}
