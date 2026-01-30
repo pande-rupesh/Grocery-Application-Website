@@ -6,31 +6,29 @@
 <title>Responsive Sidebar</title>
 <link rel="stylesheet" th:href="@{/css/admin/index.css}">
 </head>
-
 <body>
-	<section>
-		<!-- Navbar / Toggle Button -->
-		<header class="header">
-			<button class="toggle-btn" id="toggleBtn">&#9776;</button>
-		</header>
+    <!-- Header -->
+    <header class="header">
+        <button class="toggle-btn" id="toggleBtn">&#9776;</button>
+        <h2 style="margin-left: 10px; color:white;">Admin Dashboard</h2>
+    </header>
 
-		<!-- Sidebar -->
-		<nav class="sidebar" id="sidebar">
-			<ul>
-				<li><a href="#">🏠 Home</a></li>
-				<li><a href="#">📚 About</a></li>
-				<li><a href="#">💼 Services</a></li>
-				<li><a href="#">📞 Contact</a></li>
-			</ul>
-		</nav>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <ul>
+            <li><a href="#">🏠 Home</a></li>
+            <li><a href="#">📚 About</a></li>
+            <li><a href="#">💼 Services</a></li>
+            <li><a href="#">📞 Contact</a></li>
+        </ul>
+    </nav>
 
-		<!-- Main Content -->
-		<main class="content">
-			<h1>Responsive Sidebar Example</h1>
-			<p>This is the main content area. Resize your screen to see the
-				responsive sidebar effect.</p>
-		</main>
-	</section>
-	<script th:src="@{/js/admin/index.js}"></script>
+    <!-- Main Content -->
+    <main class="content">
+        <h1>Responsive Sidebar Example</h1>
+        <p>This is the main content area. Resize your screen to see the responsive sidebar effect.</p>
+    </main>
+
+    <script th:src="@{/js/admin/index.js}"></script>
 </body>
 </html>
