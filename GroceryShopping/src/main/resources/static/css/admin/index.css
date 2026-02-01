@@ -87,3 +87,13 @@
         padding-top: 60px; /* header space */
     }
 }
+
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
