@@ -1,10 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Product</title>
+
+<!-- Bootstrap 5 CDN -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
 </head>
-<body>
-<h1>Add Product</h1>
+
+<body class="bg-light">
+
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6">
+
+				<div class="card shadow-lg border-0 rounded-4">
+					<div
+						class="card-header bg-primary text-white text-center py-3 rounded-top-4">
+						<h3 class="mb-0">Add Product</h3>
+					</div>
+
+					<div class="card-body p-4">
+
+						<form action="addProduct" method="post"
+							enctype="multipart/form-data">
+
+							<!-- Product Name -->
+							<div class="mb-3">
+								<label class="form-label">Product Name</label> <input
+									type="text" name="pname" class="form-control" required>
+							</div>
+
+							<!-- Category -->
+							<div class="mb-3">
+								<label class="form-label">Category</label> <select
+									name="category" class="form-control" required>
+									<option value="">Select Category</option>
+									<option>Atta,Rice & Dal</option>
+									<option>Oil and Ghee</option>
+									<option>Tea, Coffee & Beverages</option>
+									<option>Dry Fruits</option>
+									<option>Masala,Spices & Salt</option>
+									<option>Sauces & Spreads</option>
+									<option>Vegetable</option>
+									<option>Fruits</option>
+									<option>Instant Food</option>
+									<option>Festival Specials</option>
+								</select>
+							</div>
+
+							<!-- Price -->
+							<div class="mb-3">
+								<label class="form-label">Price</label> <input type="number"
+									name="price" class="form-control" required>
+							</div>
+
+							<!-- Quantity -->
+							<div class="mb-3">
+								<label class="form-label">Quantity</label> <input type="number"
+									name="qty" class="form-control" required>
+							</div>
+
+							<!-- Description -->
+							<div class="mb-3">
+								<label class="form-label">Description</label>
+								<textarea name="description" class="form-control" rows="3"></textarea>
+							</div>
+				
+							<!-- Product Status -->
+							<div class="mb-3">
+								<label class="form-label d-block">Product Status</label>
+
+								<div class="form-check form-switch">
+									<input class="form-check-input" type="checkbox" id="pstatus"
+										name="status" checked> <label class="form-check-label"
+										for="pstatus">Active</label>
+								</div>
+							</div>
+
+
+							<!-- Image Upload -->
+							<div class="mb-3">
+								<label class="form-label">Product Image</label> <input
+									type="file" name="image" class="form-control" required>
+							</div>
+
+							<!-- Submit -->
+							<div class="d-grid">
+								<button class="btn btn-primary btn-lg">Add Product</button>
+							</div>
+
+						</form>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap Script -->
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
