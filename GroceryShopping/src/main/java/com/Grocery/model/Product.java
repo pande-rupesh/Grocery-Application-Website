@@ -16,6 +16,7 @@ public class Product {
 	private String Category;
 	@Column(columnDefinition = "double(10,2)")
 	private double price;
+	private String unit;
 	@Column(length = 1000)
 	private String description;
 	private boolean  status;
@@ -68,11 +69,18 @@ public class Product {
 	public void setImage(String image) {
 		Image = image;
 	}
+	public String getUnit() {
+		return unit;
+	}
+	public void setUnit(String unit) {
+		this.unit = unit;
+	}
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", product_name=" + product_name + ", brand_name=" + brand_name + ", Category="
-				+ Category + ", price=" + price + ", description=" + description + ", status=" + status + ", Image="
-				+ Image + "]";
+				+ Category + ", price=" + price + ", unit=" + unit + ", description=" + description + ", status="
+				+ status + ", Image=" + Image + "]";
 	}
+	
 
 }
