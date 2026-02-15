@@ -16,6 +16,8 @@
 	<div class="container py-5">
 		<div class="row justify-content-center">
 			<div class="col-md-8 col-lg-6">
+				<div id="msg-box" th:if="${msg}" th:text="${msg}"
+					style="color: green; font-size: 18px; font-weight: bold;"></div>
 
 				<div class="card shadow-lg border-0 rounded-4">
 					<div
@@ -25,19 +27,25 @@
 
 					<div class="card-body p-4">
 
-						<form action="addProduct" method="post"
+						<form action="/admin/addProductinDb" method="post"
 							enctype="multipart/form-data">
 
 							<!-- Product Name -->
 							<div class="mb-3">
 								<label class="form-label">Product Name</label> <input
-									type="text" name="pname" class="form-control" required>
+									type="text" name="product_name" class="form-control" required>
+							</div>
+
+							<!-- Brand Name -->
+							<div class="mb-3">
+								<label class="form-label">Brand Name</label> <input type="text"
+									name="brand_name" class="form-control" required>
 							</div>
 
 							<!-- Category -->
 							<div class="mb-3">
 								<label class="form-label">Category</label> <select
-									name="category" class="form-control" required>
+									name="Category" class="form-control" required>
 									<option value="">Select Category</option>
 									<option>Atta,Rice & Dal</option>
 									<option>Oil and Ghee</option>
@@ -55,13 +63,7 @@
 							<!-- Price -->
 							<div class="mb-3">
 								<label class="form-label">Price</label> <input type="number"
-									name="price" class="form-control" required>
-							</div>
-
-							<!-- Quantity -->
-							<div class="mb-3">
-								<label class="form-label">Quantity</label> <input type="number"
-									name="qty" class="form-control" required>
+									name="price" class="form-control" required step="0.01">
 							</div>
 
 							<!-- Description -->
@@ -69,23 +71,27 @@
 								<label class="form-label">Description</label>
 								<textarea name="description" class="form-control" rows="3"></textarea>
 							</div>
-				
+
 							<!-- Product Status -->
 							<div class="mb-3">
 								<label class="form-label d-block">Product Status</label>
 
-								<div class="form-check form-switch">
-									<input class="form-check-input" type="checkbox" id="pstatus"
-										name="status" checked> <label class="form-check-label"
-										for="pstatus">Active</label>
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="status"
+										value="true" checked> <label class="form-check-label">Available</label>
+								</div>
+
+								<div class="form-check">
+									<input class="form-check-input" type="radio" name="status"
+										value="false"> <label class="form-check-label">Not
+										Available</label>
 								</div>
 							</div>
-
 
 							<!-- Image Upload -->
 							<div class="mb-3">
 								<label class="form-label">Product Image</label> <input
-									type="file" name="image" class="form-control" required>
+									type="file" name="file" class="form-control" required>
 							</div>
 
 							<!-- Submit -->
@@ -102,7 +108,6 @@
 		</div>
 	</div>
 
-	<!-- Bootstrap Script -->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
