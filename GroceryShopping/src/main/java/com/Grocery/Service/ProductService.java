@@ -8,4 +8,5 @@ public interface ProductService {
 	Product save(Product p);
 	List<Product> findAll();
 	int deleteById(int id);
+	Product findById(int id);
 }

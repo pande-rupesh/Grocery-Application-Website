@@ -22,4 +22,5 @@ public interface productrepo extends JpaRepository<Product, Integer> {
 	@Modifying
 	 int deleteById(int id);
 
+	Product findById(int id);
 }

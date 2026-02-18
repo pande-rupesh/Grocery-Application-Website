@@ -85,4 +85,12 @@ public class AdminController {
 		return m;
 	}
 
+	@GetMapping(value = "/editproduct/{id}")
+	public  ModelAndView editProduct(ModelAndView m,@PathVariable int id) {
+		Product p=ss.findById(id);
+		System.out.println(p);
+		m.addObject("product",p);
+		m.setViewName("admin/EditProduct");
+		return m;
+	}
 }
