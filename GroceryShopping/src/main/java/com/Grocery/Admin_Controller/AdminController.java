@@ -48,49 +48,85 @@ public class AdminController {
 		System.out.println(product);
 		System.out.println(file.getOriginalFilename());
 
-		String FileName = file != null ? file.getOriginalFilename() : "defulat.jpeg";
-		product.setImage(FileName);
+		String fileName;
+
+		// If user uploads a new file
+		if (!file.isEmpty()) {
+			fileName = file.getOriginalFilename();
+			product.setImage(fileName);
+		} else {
+			// Keep old image
+			fileName = "defualt.jpeg";
+			product.setImage(fileName);
+		}
 		ss.save(product);
 		File savefile = new ClassPathResource("static/img").getFile();
-		Path path=Paths.get(
-				savefile.getAbsolutePath() + File.separator + "product" + File.separator + FileName);
+		Path path = Paths.get(savefile.getAbsolutePath() + File.separator + "product" + File.separator + FileName);
 		System.out.println(path);
-		Files.copy(file.getInputStream(), path,StandardCopyOption.REPLACE_EXISTING);
+		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		model.addAttribute("msg", "hello");
 
-		
-		
 		return "admin/AddProduct";
 	}
-	
+
 	@GetMapping(value = "/viewallproduct")
-	public ModelAndView viewAllProduct(ModelAndView m)
-	{
-		m.addObject("ProductList",ss.findAll());
+	public ModelAndView viewAllProduct(ModelAndView m) {
+		m.addObject("ProductList", ss.findAll());
 		m.setViewName("admin/viewAllProduct");
 		return m;
 	}
-	
+
 	@GetMapping(value = "/deleteproduct/{id}")
-	public ModelAndView deleteProduct(ModelAndView m,@PathVariable int id)
-	{
-		int i=ss.deleteById(id);
-		if(i==1)
-		{
-			m.addObject("sussmsg","Product Delete Successfully");
-		}else {
-			m.addObject("errmsg","Something Went Wrong");
+	public ModelAndView deleteProduct(ModelAndView m, @PathVariable int id) {
+		int i = ss.deleteById(id);
+		if (i == 1) {
+			m.addObject("sussmsg", "Product Delete Successfully");
+		} else {
+			m.addObject("errmsg", "Something Went Wrong");
 		}
 		viewAllProduct(m);
 		return m;
 	}
 
 	@GetMapping(value = "/editproduct/{id}")
-	public  ModelAndView editProduct(ModelAndView m,@PathVariable int id) {
-		Product p=ss.findById(id);
+	public ModelAndView editProduct(ModelAndView m, @PathVariable int id) {
+		Product p = ss.findById(id);
 		System.out.println(p);
-		m.addObject("product",p);
+		m.addObject("product", p);
 		m.setViewName("admin/EditProduct");
 		return m;
+	}
+
+	@PostMapping("/updateproduct")
+	public String UpdateProduct(@ModelAttribute Product product, @RequestParam("file") MultipartFile file, Model model)
+			throws IOException {
+
+		// Fetch old product
+		Product oldProduct = ss.findById(product.getId());
+
+		String fileName;
+
+		// If user uploads a new file
+		if (!file.isEmpty()) {
+			fileName = file.getOriginalFilename();
+			product.setImage(fileName);
+		} else {
+			// Keep old image
+			fileName = oldProduct.getImage();
+			product.setImage(fileName);
+		}
+
+		// Save updated product to DB
+		ss.save(product);
+
+		// Save new image only if uploaded
+		if (!file.isEmpty()) {
+			File savefile = new ClassPathResource("static/img").getFile();
+			Path path = Paths.get(savefile.getAbsolutePath() + File.separator + "product" + File.separator + fileName);
+			Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+		}
+
+		model.addAttribute("msg", "Product Updated Successfully");
+		return "redirect:/admin/viewallproduct";
 	}
 }
