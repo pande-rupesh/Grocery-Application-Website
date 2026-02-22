@@ -23,4 +23,6 @@ public interface productrepo extends JpaRepository<Product, Integer> {
 	 int deleteById(int id);
 
 	Product findById(int id);
+	
+	List<Product> findByCategoryIgnoreCase(String category);
 }

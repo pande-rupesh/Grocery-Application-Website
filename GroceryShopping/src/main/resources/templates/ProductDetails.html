@@ -17,32 +17,36 @@
 			<div class="row g-5">
 				<!-- Product Image -->
 				<div class="col-md-12 col-lg-5 product">
-					<img src="img/product/chanadal.jpg" alt="Chana Dal"
-						class="product-img shadow">
+					<img th:src="@{/img/product/{img}(img=${product.Image})}"
+						th:alt="${product.product_name}" class="product-img shadow">
 				</div>
 
 				<!-- Product Info -->
 				<div class="col-md-12 col-lg-7">
-					<h2 class="fw-bold">Chana Dal (1kg)</h2>
-					<p class="text-muted">Category: Dal / Pulses</p>
-					<p class="price">₹120.00</p>
-					<p>Fresh and premium-quality Chana Dal packed with protein and
-						flavor. Perfect for your everyday cooking and rich in nutrients.</p>
+					<h2 class="fw-bold"
+						th:text="${product.product_name} + ' (' + ${product.unit} + ')'">
+						Product Name</h2>
+					<p class="text-muted" th:text="'Category: ' + ${product.category}">
+						Category: N/A</p>
+					<p class="price" th:text="'₹' + ${product.price}">₹0.00</p>
+					<p th:text="${product.description}">Product Description</p>
 
+					<!-- Quantity & Cart Buttons -->
 					<div class="d-flex align-items-center gap-3 mt-4">
 						<input type="number" value="1" min="1" class="form-control w-25">
-						<a href="/add-to-cart" class="btn btn-success btn-lg">Add to
-							Cart</a> <a href="/checkout" class="btn btn-buy btn-lg text-white">Buy
+						<a th:href="@{/add-to-cart/{id}(id=${product.id})}"
+							class="btn btn-success btn-lg">Add to Cart</a> <a
+							th:href="@{/checkout}" class="btn btn-buy btn-lg text-white">Buy
 							Now</a>
 					</div>
 
 					<div class="mt-4">
 						<h5>Product Details</h5>
 						<ul>
-							<li>Weight: 1kg</li>
-							<li>Brand: FreshMart Organics</li>
-							<li>Origin: India</li>
-							<li>Delivery: Within 2-3 days</li>
+							<li th:text="'Weight: ' + ${product.unit}">Weight: 1kg</li>
+							<li th:text="'Brand: ' + ${product.brand_name}">Brand: N/A</li>
+
+
 						</ul>
 					</div>
 				</div>

@@ -176,158 +176,24 @@
 					</div>
 
 					<!-- Product grid -->
-					<div class=" ms-2 row g-4">
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Chana Dal"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Fresh Chana Dal</h6>
-									<p class="text-success fw-semibold mb-2">₹120 / kg</p>
-									<a href="/productDetails" class="btn btn-sm btn-success w-100">
-										Add to Cart </a>
+					<div class="ms-2 row g-4">
+						<th:block th:each="product : ${products}">
+							<div class="col-12 col-sm-12 col-md-6 col-lg-3">
+								<div class="product-card w-100">
+									<img th:src="@{/img/product/{img}(img=${product.Image})}"
+										th:alt="${product.product_name}" class="product-img img-fluid">
+									<div class="product-details text-center">
+										<h6 class="fw-bold mb-1" th:text="${product.product_name}">Product
+											Name</h6>
+										<p class="text-success fw-semibold mb-2"
+											th:text="'₹' + ${product.price} + ' / ' + ${product.unit}">₹0
+											/ unit</p>
+										<a th:href="@{/productDetails/{id}(id=${product.id})}"
+											class="btn btn-sm btn-success w-100"> Add to Cart </a>
+									</div>
 								</div>
 							</div>
-						</div>
-
-						<!-- Repeat other product cards -->
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<!-- Repeat other product cards -->
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<!-- Repeat other product cards -->
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-
-						<!-- Repeat other product cards -->
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<a href="/productDetails" class="btn btn-sm btn-success w-100">
-										Add to Cart </a>
-								</div>
-							</div>
-						</div>
-
-
-
-						<!-- Repeat other product cards -->
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-sm-12 col-md-6 col-lg-3">
-							<div class="product-card w-100">
-								<img src="img/product/chanadal.jpg" alt="Other Product"
-									class="product-img img-fluid">
-								<div class="product-details text-center">
-									<h6 class="fw-bold mb-1">Other Product</h6>
-									<p class="text-success fw-semibold mb-2">₹150 / kg</p>
-									<button class="btn btn-sm btn-success w-100">Add to
-										Cart</button>
-								</div>
-							</div>
-						</div>
-						<!-- Add more products here -->
+						</th:block>
 					</div>
 				</div>
 			</div>

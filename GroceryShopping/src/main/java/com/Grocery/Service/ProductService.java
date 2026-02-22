@@ -9,4 +9,5 @@ public interface ProductService {
 	List<Product> findAll();
 	int deleteById(int id);
 	Product findById(int id);
+	List<Product> findByCategoryIgnoreCase(String category);
 }

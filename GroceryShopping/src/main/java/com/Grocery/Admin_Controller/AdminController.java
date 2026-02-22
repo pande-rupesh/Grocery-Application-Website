@@ -61,7 +61,7 @@ public class AdminController {
 		}
 		ss.save(product);
 		File savefile = new ClassPathResource("static/img").getFile();
-		Path path = Paths.get(savefile.getAbsolutePath() + File.separator + "product" + File.separator + FileName);
+		Path path = Paths.get(savefile.getAbsolutePath() + File.separator + "product" + File.separator + fileName);
 		System.out.println(path);
 		Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 		model.addAttribute("msg", "hello");

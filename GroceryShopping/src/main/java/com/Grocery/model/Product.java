@@ -13,7 +13,7 @@ public class Product {
 	private int id;
 	private String product_name;
 	private String brand_name;
-	private String Category;
+	private String category;
 	@Column(columnDefinition = "double(10,2)")
 	private double price;
 	private String unit;
@@ -40,10 +40,10 @@ public class Product {
 		this.brand_name = brand_name;
 	}
 	public String getCategory() {
-		return Category;
+		return category;
 	}
 	public void setCategory(String category) {
-		Category = category;
+		this.category = category;
 	}
 	public double getPrice() {
 		return price;
@@ -78,7 +78,7 @@ public class Product {
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", product_name=" + product_name + ", brand_name=" + brand_name + ", Category="
-				+ Category + ", price=" + price + ", unit=" + unit + ", description=" + description + ", status="
+				+ category + ", price=" + price + ", unit=" + unit + ", description=" + description + ", status="
 				+ status + ", Image=" + Image + "]";
 	}
 	

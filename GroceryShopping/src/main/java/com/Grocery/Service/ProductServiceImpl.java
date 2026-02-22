@@ -36,5 +36,10 @@ public class ProductServiceImpl implements ProductService{
 		// TODO Auto-generated method stub
 		return repo.findById(id);
 	}
-
+	@Override
+	public List<Product> findByCategoryIgnoreCase(String category) {
+		// TODO Auto-generated method stub
+		return repo.findByCategoryIgnoreCase(category);
+	}
+	
 }
