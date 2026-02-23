@@ -6,16 +6,24 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.Grocery.model.*;
+import org.springframework.ui.Model;
+
 import com.Grocery.Service.ProductServiceImpl;
+import com.Grocery.Service.userService;
 
 @Controller
 public class HomeController {
 	@Autowired
 	private ProductServiceImpl ss;
+	
+	@Autowired
+	private userService service;
 
 	@GetMapping("/")
 	public String index() {
@@ -67,6 +75,23 @@ public class HomeController {
 		m.addObject("product", p);
 		m.setViewName("ProductDetails");
 		return m;
+	}
+	
+	//------user--------//
+	
+	@PostMapping(value = "/register")
+	public String saveUser(@ModelAttribute User user, Model model)
+	{
+		System.out.println(user);
+		User u=service.save(user);
+		if (u!=null) {
+			model.addAttribute("msg","registration Successfull");
+			return "login";
+		}else
+		{
+			model.addAttribute("msg","Something went wrong on server");
+			return "register";
+		}
 	}
 
 }

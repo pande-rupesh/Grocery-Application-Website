@@ -20,31 +20,34 @@
 <body>
 	<section>
 		<div class="card">
+			<div id="msg-box" th:if="${msg}" th:text="${msg}"
+				style="color: green; font-size: 18px; font-weight: bold;"></div>
+
 			<img th:src="@{/img/login/logo.png}" alt="img not found">
 			<h2 style="color: red;">Create Account</h2>
-			<form>
+			<form action="/register" method="post">
 
 				<!-- Name -->
 				<div class="mb-3">
-					<input type="text" class="form-control email" placeholder="Name"
-						required>
+					<input type="text" class="form-control email" name="name"
+						placeholder="Name" required>
 				</div>
 
 				<!-- Number -->
 				<div class="mb-3">
 					<input type="number" class="form-control email"
-						placeholder="Mobile Number" required>
+						placeholder="Mobile Number" name="mobile" required>
 				</div>
 
 				<!-- Email -->
 				<div class="mb-3">
 					<input type="email" class="form-control email" placeholder="Email"
-						required>
+						name="email" required>
 				</div>
 
 				<!-- Password -->
 				<div class="mb-3">
-					</i> <input type="password" class="form-control email"
+					</i> <input type="password" class="form-control email" name="password"
 						placeholder="Password" required>
 				</div>
 
@@ -58,5 +61,13 @@
 			</h3>
 		</div>
 	</section>
+	<script>
+    setTimeout(() => {
+        let msgBox = document.getElementById("msg-box");
+        if (msgBox) {
+            msgBox.style.display = "none";
+        }
+    }, 3000);
+</script>
 </body>
 </html>

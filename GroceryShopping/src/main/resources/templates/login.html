@@ -21,6 +21,8 @@
 
 	<section>
 		<div class="card">
+			<div id="msg-box" th:if="${msg}" th:text="${msg}"
+				style="color: green; font-size: 18px; font-weight: bold;"></div>
 			<img th:src="@{/img/login/logo.png}" alt="img not found">
 			<h2 style="color: red;">Welcome Back</h2>
 			<form>
@@ -32,8 +34,8 @@
 
 				<!-- Password -->
 				<div class="mb-3">
-					</i> <input type="password" class="form-control email" placeholder="Password"
-						required>
+					</i> <input type="password" class="form-control email"
+						placeholder="Password" required>
 				</div>
 
 				<!-- Submit button -->
@@ -49,3 +51,16 @@
 
 </body>
 </html>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        const msgBox = document.getElementById("msg-box");
+        if (msgBox) {
+            msgBox.style.transition = "opacity 0.8s";
+            msgBox.style.opacity = "0";
+            setTimeout(() => msgBox.style.display = "none", 800);
+        }
+    }, 3000);
+});
+</script>
