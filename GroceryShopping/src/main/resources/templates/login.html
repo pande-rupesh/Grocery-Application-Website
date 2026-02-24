@@ -25,17 +25,17 @@
 				style="color: green; font-size: 18px; font-weight: bold;"></div>
 			<img th:src="@{/img/login/logo.png}" alt="img not found">
 			<h2 style="color: red;">Welcome Back</h2>
-			<form>
+			<form action="/login" method="post">
 				<!-- Email -->
 				<div class="mb-3">
-					<input type="email" class="form-control email" placeholder="Email"
+					<input type="email" class="form-control email" placeholder="Email" name="username"
 						required>
 				</div>
 
 				<!-- Password -->
 				<div class="mb-3">
 					</i> <input type="password" class="form-control email"
-						placeholder="Password" required>
+						placeholder="Password" name="password" required>
 				</div>
 
 				<!-- Submit button -->

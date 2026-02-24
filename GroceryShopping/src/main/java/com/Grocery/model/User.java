@@ -21,6 +21,13 @@ public class User {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id")
 	private Address address;
+	private String role;
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public int getId() {
 		return id;
 	}
@@ -60,8 +67,9 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", password="
-				+ password + "]";
+				+ password + ", address=" + address + ", role=" + role + "]";
 	}
+	
 	
 	
 }
