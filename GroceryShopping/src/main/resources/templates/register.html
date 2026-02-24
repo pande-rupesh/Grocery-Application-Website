@@ -30,13 +30,15 @@
 				<!-- Name -->
 				<div class="mb-3">
 					<input type="text" class="form-control email" name="name"
-						placeholder="Name" required>
+						placeholder="Name" required pattern="[A-Za-z\s]+"
+						title="Only alphabets allowed">
 				</div>
 
 				<!-- Number -->
 				<div class="mb-3">
-					<input type="number" class="form-control email"
-						placeholder="Mobile Number" name="mobile" required>
+					<input type="tel" class="form-control email"
+						placeholder="Mobile Number" name="mobile" required
+						pattern="[1-9][0-9]{9}" title="Please Enter Valid 10 Degit mobile Number">
 				</div>
 
 				<!-- Email -->
@@ -61,13 +63,17 @@
 			</h3>
 		</div>
 	</section>
-	<script>
-    setTimeout(() => {
-        let msgBox = document.getElementById("msg-box");
-        if (msgBox) {
-            msgBox.style.display = "none";
-        }
-    }, 3000);
-</script>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        const msgBox = document.getElementById("msg-box");
+        if (msgBox) {
+            msgBox.style.transition = "opacity 0.8s";
+            msgBox.style.opacity = "0";
+            setTimeout(() => msgBox.style.display = "none", 800);
+        }
+    }, 1000);
+});
+</script>

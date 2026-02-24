@@ -7,4 +7,6 @@ import com.Grocery.model.*;
 public interface userrepo extends JpaRepository<User, Integer>{
 	
 	User save(User u);
+	boolean existsByEmail(String email);
+	boolean existsByMobile(String mobile);
 }

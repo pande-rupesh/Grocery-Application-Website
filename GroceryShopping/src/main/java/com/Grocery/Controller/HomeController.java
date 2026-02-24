@@ -83,6 +83,15 @@ public class HomeController {
 	public String saveUser(@ModelAttribute User user, Model model)
 	{
 		System.out.println(user);
+		if(service.existsByEmail(user.getEmail()))
+		{
+			model.addAttribute("msg","Email Already Exits");
+			return "register";
+		}
+		if(service.existsByMobile(user.getMobile())) {
+			model.addAttribute("msg","Mobile Number Already Exits");
+			return "register";
+		}
 		User u=service.save(user);
 		if (u!=null) {
 			model.addAttribute("msg","registration Successfull");

@@ -20,4 +20,16 @@ public class userServiceimpl implements userService{
 		return repo.save(u);
 	}
 
+	@Override
+	public boolean existsByEmail(String email) {
+		// TODO Auto-generated method stub
+		return repo.existsByEmail(email);
+	}
+
+	@Override
+	public boolean existsByMobile(String mobile) {
+		// TODO Auto-generated method stub
+		return repo.existsByMobile(mobile);
+	}
+
 }
