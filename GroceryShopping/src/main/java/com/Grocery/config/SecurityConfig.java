@@ -47,7 +47,7 @@ public class SecurityConfig {
                             "/img/**",
                             "/img/product/**"
                     ).permitAll()
-                .requestMatchers("/", "/signin", "/register").permitAll()
+                .requestMatchers("/", "/signin", "/register","/product").permitAll()
                 .requestMatchers("/user/**").hasRole("USER")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()

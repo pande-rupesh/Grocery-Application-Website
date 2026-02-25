@@ -1,5 +1,6 @@
 package com.Grocery.Controller;
 
+import java.security.Principal;
 import java.util.Comparator;
 import java.util.List;
 
@@ -28,6 +29,17 @@ public class HomeController {
 	@GetMapping("/")
 	public String index() {
 		return "index";
+	}
+	
+	@ModelAttribute
+	public void getUser(Principal p, Model m)
+	{
+		if(p!=null)
+		{
+			String email=p.getName();
+			User user=service.findByEmail(email);
+			m.addAttribute("user",user);
+		}
 	}
 
 	@GetMapping("/signin")

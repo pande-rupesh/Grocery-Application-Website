@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -20,7 +21,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.Grocery.Service.ProductServiceImpl;
+import com.Grocery.Service.userService;
 import com.Grocery.model.Product;
+import com.Grocery.model.User;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +33,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class AdminController {
 	@Autowired
 	private ProductServiceImpl ss;
+	
+	@Autowired
+	private userService service;
 
 	@GetMapping("/")
 	public String index() {
@@ -128,5 +134,15 @@ public class AdminController {
 
 		model.addAttribute("msg", "Product Updated Successfully");
 		return "redirect:/admin/viewallproduct";
+	}
+	
+	public void getUser(Principal p, Model m)
+	{
+		if(p!=null)
+		{
+			String email=p.getName();
+			User user=service.findByEmail(email);
+			m.addAttribute("user",user);
+		}
 	}
 }

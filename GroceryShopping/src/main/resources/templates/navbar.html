@@ -49,6 +49,7 @@
 		</div>
 
 		<div class="nav-signin">
+		<th:block th:if="${user==null}">
 			<i class="fa-solid fa-circle-user"></i><span>Account</span>
 			<!-- Dropdown menu -->
 			<div class="dropdown">
@@ -59,6 +60,20 @@
 					<li><a href="#">Help</a></li>
 				</ul>
 			</div>
+			</th:block>
+			
+			<th:block th:if="${user!=null}">
+			<i class="fa-solid fa-circle-user"></i><span>[[${user.name}]]</span>
+			<!-- Dropdown menu -->
+			<div class="dropdown">
+				<ul>
+					<li><a href="#">Update Profile</a></li>
+					<li><a href="#">My Orders</a></li>
+					<li><a href="#">Help</a></li>
+					<li><a href="/logout">Logout</a></li>
+				</ul>
+			</div>
+			</th:block>
 		</div>
 
 		<div class="nav-cart ">

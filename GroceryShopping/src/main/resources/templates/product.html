@@ -4,7 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" th:href="@{/css/indexStyle.css}">
+<link rel="stylesheet" th:href="@{/css/product.css}">
 
 </head>
 <body>
@@ -188,7 +188,7 @@
 							<div class="col-12 col-sm-12 col-md-6 col-lg-3">
 								<div class="product-card w-100">
 									<img th:src="@{/img/product/{img}(img=${product.Image})}"
-										th:alt="${product.product_name}" class="product-img img-fluid">
+										th:alt="${product.product_name}" class="product-img">
 									<div class="product-details text-center">
 										<h6 class="fw-bold mb-1" th:text="${product.product_name}">Product
 											Name</h6>

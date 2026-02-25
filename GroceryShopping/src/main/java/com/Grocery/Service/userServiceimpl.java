@@ -38,4 +38,10 @@ public class userServiceimpl implements userService{
 		return repo.existsByMobile(mobile);
 	}
 
+	@Override
+	public User findByEmail(String email) {
+		// TODO Auto-generated method stub
+		return repo.findByEmail(email);
+	}
+
 }

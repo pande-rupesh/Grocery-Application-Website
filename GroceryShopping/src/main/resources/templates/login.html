@@ -24,12 +24,20 @@
 			<div id="msg-box" th:if="${msg}" th:text="${msg}"
 				style="color: green; font-size: 18px; font-weight: bold;"></div>
 			<img th:src="@{/img/login/logo.png}" alt="img not found">
+			<div id="msg-box" th:if="${param.lgout}"
+				style="color: green; font-size: 18px; font-weight: bold;">
+				Logout Successfully!</div>
+
+			<div id="msg-box" th:if="${param.error}"
+				style="color: green; font-size: 18px; font-weight: bold;">
+				Invalid Username & PassWord</div>
+				
 			<h2 style="color: red;">Welcome Back</h2>
 			<form action="/login" method="post">
 				<!-- Email -->
 				<div class="mb-3">
-					<input type="email" class="form-control email" placeholder="Email" name="username"
-						required>
+					<input type="email" class="form-control email" placeholder="Email"
+						name="username" required>
 				</div>
 
 				<!-- Password -->
