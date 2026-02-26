@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Grocery.Service.ProductServiceImpl;
 import com.Grocery.Service.userService;
@@ -144,5 +146,25 @@ public class AdminController {
 			User user=service.findByEmail(email);
 			m.addAttribute("user",user);
 		}
+	}
+	
+	@GetMapping(value = "/user")
+	public ModelAndView getalluser(ModelAndView m)
+	{
+	   List<User> u=service.findByRole("ROLE_USER");
+	   m.addObject("User", u);
+	   m.setViewName("admin/user");
+		return m;
+	}
+	
+	@GetMapping("/updateStatus")
+	public String updateStatus(@RequestParam Boolean status,
+	                           @RequestParam Integer id,
+	                           RedirectAttributes ra) {
+
+	    service.updateStatus(status, id);  
+
+	   ra.addFlashAttribute("msg", "Status Updated Sucessfully!!!");
+	    return "redirect:/admin/user";
 	}
 }

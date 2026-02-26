@@ -30,7 +30,7 @@
 
 			<div id="msg-box" th:if="${param.error}"
 				style="color: green; font-size: 18px; font-weight: bold;">
-				Invalid Username & PassWord</div>
+				[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</div>
 				
 			<h2 style="color: red;">Welcome Back</h2>
 			<form action="/login" method="post">

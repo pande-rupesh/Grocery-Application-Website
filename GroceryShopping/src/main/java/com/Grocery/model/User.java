@@ -22,6 +22,14 @@ public class User {
 	@JoinColumn(name = "address_id")
 	private Address address;
 	private String role;
+	private boolean isEnabled;
+	
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
+	}
 	public String getRole() {
 		return role;
 	}
@@ -67,9 +75,10 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", password="
-				+ password + ", address=" + address + ", role=" + role + "]";
+				+ password + ", address=" + address + ", role=" + role + ", isEnabled=" + isEnabled + "]";
 	}
 	
+		
 	
 	
 }

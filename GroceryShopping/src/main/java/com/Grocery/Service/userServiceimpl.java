@@ -1,5 +1,7 @@
 package com.Grocery.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,6 +23,7 @@ public class userServiceimpl implements userService{
 	@Override
 	public User save(User u) {
 		u.setRole("ROLE_USER");
+		u.setEnabled(true);
 		String encodedpassword=passwordEncoder.encode(u.getPassword());
 		u.setPassword(encodedpassword);
 		return repo.save(u);
@@ -43,5 +46,25 @@ public class userServiceimpl implements userService{
 		// TODO Auto-generated method stub
 		return repo.findByEmail(email);
 	}
+
+	@Override
+	public List<User> findByRole(String role) {
+		// TODO Auto-generated method stub
+		return repo.findByRole(role);
+	}
+
+	@Override
+	public User findById(int id) {
+		// TODO Auto-generated method stub
+		return repo.findById(id);
+	}
+
+	@Override
+	public void updateStatus(boolean status, int id) {
+		repo.updateStatus(status, id);
+		
+	}
+
+
 
 }

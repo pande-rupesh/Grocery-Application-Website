@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Users</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+rel="stylesheet">
+
+</head>
+<body class="bg-light">
+
+    <div class="container mt-4">
+
+        <h2 class="text-center mb-4">All Users</h2>
+
+        <!-- Empty list -->
+        <div th:if="${#lists.isEmpty(User)}"
+             class="alert alert-warning text-center">
+             No Users Found!
+        </div>
+
+        <!-- Success Message -->
+        <div id="msg-box" th:if="${msg}" th:text="${msg}"
+             style="color: green; font-size: 18px; font-weight: bold;">
+        </div>
+
+        <!-- Table -->
+        <div th:if="${!#lists.isEmpty(User)}" class="table-responsive">
+
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-dark text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Mobile</th>
+                        <th>Address</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody class="align-middle">
+                    <tr th:each="p : ${User}">
+
+                        <td th:text="${p.name}"></td>
+                        <td th:text="${p.email}"></td>
+                        <td th:text="${p.mobile}"></td>
+                        <td th:text="${p.address}"></td> <!-- FIXED -->
+                        <td th:text="${p.enabled}"></td> <!-- FIXED -->
+
+                        <td class="text-center">
+                            <a th:href="@{'/admin/updateStatus?status=true&id='+${p.id}}"
+                               class="btn btn-primary btn-sm">Active</a>
+
+                            <a th:href="@{'/admin/updateStatus?status=false&id='+${p.id}}"
+                               onclick="return confirm('Inactive this user?')"
+                               class="btn btn-danger btn-sm">Inactive</a>
+                        </td>
+
+                    </tr>
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        const msgBox = document.getElementById("msg-box");
+        if (msgBox) {
+            msgBox.style.transition = "opacity 0.8s";
+            msgBox.style.opacity = "0";
+            setTimeout(() => msgBox.style.display = "none", 800);
+        }
+    }, 3000);
+});
+</script>
+
+</body>
+</html>
