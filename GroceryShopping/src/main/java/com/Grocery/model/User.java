@@ -23,7 +23,14 @@ public class User {
 	private Address address;
 	private String role;
 	private boolean isEnabled;
+	private String token;
 	
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
+	}
 	public boolean isEnabled() {
 		return isEnabled;
 	}
@@ -75,7 +82,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", mobile=" + mobile + ", email=" + email + ", password="
-				+ password + ", address=" + address + ", role=" + role + ", isEnabled=" + isEnabled + "]";
+				+ password + ", address=" + address + ", role=" + role + ", isEnabled=" + isEnabled + ", Token=" + token
+				+ "]";
 	}
 	
 		

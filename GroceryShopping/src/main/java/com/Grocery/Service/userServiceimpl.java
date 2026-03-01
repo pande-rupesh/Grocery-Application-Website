@@ -65,6 +65,23 @@ public class userServiceimpl implements userService{
 		
 	}
 
+	@Override
+	public void updateToken(String string, int id) {
+		repo.updateToken(string, id);
+		
+	}
+
+	@Override
+	public User findByToken(String token) {
+		return repo.findByToken(token);
+	}
+
+	@Override
+	public void updatePassword(String password, int id) {
+		repo.updatePassword(password, id);
+		
+	}
+
 
 
 }
