@@ -14,6 +14,8 @@
 	<!-- Product Details Section -->
 	<section class="py-5">
 		<div class="container">
+			<div id="msg-box" th:if="${msg}" th:text="${msg}"
+				style="color: green; font-size: 18px; font-weight: bold;"></div>
 			<div class="row g-5">
 				<!-- Product Image -->
 				<div class="col-md-12 col-lg-5 product">
@@ -34,9 +36,16 @@
 					<!-- Quantity & Cart Buttons -->
 					<div class="d-flex align-items-center gap-3 mt-4">
 						<input type="number" value="1" min="1" class="form-control w-25">
-						<a th:href="@{/add-to-cart/{id}(id=${product.id})}"
-							class="btn btn-success btn-lg">Add to Cart</a> <a
-							th:href="@{/checkout}" class="btn btn-buy btn-lg text-white">Buy
+
+						<th:block th:if="${user==null}">
+							<a th:href="@{/signin}" class="btn btn-success btn-lg">Add to
+								Cart</a>
+						</th:block>
+						<th:block th:unless="${user==null}">
+							<a th:href="@{/add-to-cart(pid=${product.id}, uid=${user.id})}"
+								class="btn btn-success btn-lg"> Add to Cart </a>
+						</th:block>
+						<a th:href="@{/checkout}" class="btn btn-buy btn-lg text-white">Buy
 							Now</a>
 					</div>
 
@@ -55,3 +64,15 @@
 	</section>
 </body>
 </html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(() => {
+        const msgBox = document.getElementById("msg-box");
+        if (msgBox) {
+            msgBox.style.transition = "opacity 0.8s";
+            msgBox.style.opacity = "0";
+            setTimeout(() => msgBox.style.display = "none", 800);
+        }
+    }, 2000);
+});
+</script>

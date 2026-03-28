@@ -19,13 +19,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Grocery.model.*;
 import org.springframework.ui.Model;
+import org.springframework.util.ObjectUtils;
 
+import com.Grocery.Repository.cartRepository;
 import com.Grocery.Service.ProductServiceImpl;
+import com.Grocery.Service.cartService;
+import com.Grocery.Service.cartServiceImpl;
+import com.Grocery.Service.orderItemsservice;
 import com.Grocery.Service.userService;
 import com.Grocery.Util.Sendmail;
 
 @Controller
 public class HomeController {
+
 	@Autowired
 	private ProductServiceImpl ss;
 
@@ -34,9 +40,15 @@ public class HomeController {
 
 	@Autowired
 	private Sendmail sendmail;
-	
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+
+	@Autowired
+	private cartService cartService;
+	
+	@Autowired
+	private orderItemsservice itemsservice;
 
 	@GetMapping("/")
 	public String index() {
@@ -169,13 +181,120 @@ public class HomeController {
 		String encode = passwordEncoder.encode(password);
 		if (byToken == null) {
 			m.addObject("msg", "Link is invalid or expried");
-		}else {
+		} else {
 			byToken.setToken(null);
 			service.updatePassword(encode, byToken.getId());
 			m.addObject("msg", "Password Update Successfully");
 			m.setViewName("login");
 		}
 		return m;
+	}
+
+	@GetMapping("/add-to-cart")
+	public String addToCart(@RequestParam int pid, @RequestParam int uid, RedirectAttributes ra) {
+		System.out.println("pis" + pid + " " + "uid" + uid);
+		System.out.print("heloo");
+
+		Cart saveCart = cartService.saveCart(pid, uid);
+		if (ObjectUtils.isEmpty(saveCart)) {
+			ra.addFlashAttribute("msg", "Product Failed Added To Cart");
+		} else {
+			ra.addFlashAttribute("msg", "Product  Added To Cart");
+		}
+
+		return "redirect:/productDetails/" + pid;
+	}
+
+	@GetMapping("/cart/{uid}")
+	public String cart(@PathVariable int uid, Model model) {
+
+		List<Cart> cartList = cartService.findByUserId(uid);
+
+		double totalPrice = 0.0;
+		int totalcount = 0;
+		for (Cart c : cartList) {
+			totalPrice += c.getTotalPrice();
+			totalcount++;
+		}
+
+		model.addAttribute("totalcount", totalcount);
+		model.addAttribute("total", totalPrice);
+		model.addAttribute("cartList", cartList);
+		model.addAttribute("uid", uid);
+
+		return "Cart"; // -> Cart.html
+	}
+
+	@GetMapping(value = "/cart/remove")
+	public String deleteCartItem(@RequestParam int cid, @RequestParam int uid, RedirectAttributes ra) {
+		int result = cartService.deleteById(cid);
+		if (result != 0) {
+			ra.addFlashAttribute("msg", "Item Removed From Cart");
+			return "redirect:/cart/" + uid;
+		} else {
+			ra.addFlashAttribute("msg", "Something Went wrong on Server");
+			return "redirect:/cart/" + uid;
+		}
+	}
+
+	@GetMapping("/cart/inc")
+	public String increseCart(@RequestParam int pid, @RequestParam int uid, RedirectAttributes rs) {
+		Cart cart = cartService.findByUserIdAndProductId(uid, pid);
+		if (!ObjectUtils.isEmpty(cart)) {
+			cart.setQuantity(cart.getQuantity() + 1);
+			cart.setTotalPrice(cart.getQuantity() * cart.getProduct().getPrice());
+			cartService.save(cart);
+			rs.addFlashAttribute("msg", "Quantity Increased");
+		}
+		return "redirect:/cart/" + uid;
+	}
+	
+	@GetMapping("/cart/dec")
+	public String decereaseCart(@RequestParam int pid, @RequestParam int uid, RedirectAttributes rs) {
+		Cart cart = cartService.findByUserIdAndProductId(uid, pid);
+		if (!ObjectUtils.isEmpty(cart)) {
+			if(cart.getQuantity()>1) {
+			cart.setQuantity(cart.getQuantity() - 1);
+			cart.setTotalPrice(cart.getQuantity() * cart.getProduct().getPrice());
+			cartService.save(cart);
+			rs.addFlashAttribute("msg", "Quantity deceresed");
+			}
+			else {
+				cartService.deleteById(cart.getId());
+				rs.addFlashAttribute("msg", "Item Removed From cart");
+			}
+		}
+		return "redirect:/cart/" + uid;
+	}
+	
+	@GetMapping(value = "/ordersummery")
+	public String orderSummery(@RequestParam int uid, Model model) {
+
+	    User u = service.findById(uid);
+	    model.addAttribute("user", u);
+
+	    List<Cart> cart = cartService.findByUserId(uid);
+
+	    double totalPrice = 0.0;
+	    int totalItem = 0;
+
+	    for (Cart c : cart) {
+	        totalPrice += c.getTotalPrice();
+	        totalItem++;
+	    }
+
+	    model.addAttribute("totalPrice", totalPrice);
+	    model.addAttribute("totalItem", totalItem);
+	    model.addAttribute("uid", uid);
+
+	    return "OrderSummery";   
+	}
+	
+	@PostMapping(value = "/confromorder/{uid}")
+	public String confromorder(@PathVariable int uid,@ModelAttribute Shipping_Address address)
+	{
+		itemsservice.saveOrder(uid, address);
+		return "OrderSuccess";
 	}
 
 }

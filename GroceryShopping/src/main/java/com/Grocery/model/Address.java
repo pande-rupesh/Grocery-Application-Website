@@ -8,10 +8,8 @@ public class Address {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String street;
 	private String city;
-	private String state;
 	private String zip;
 
 	// Optional relationship back to User
@@ -21,10 +19,9 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(String street, String city, String state, String zip) {
+	public Address(String street, String city, String zip) {
 		this.street = street;
 		this.city = city;
-		this.state = state;
 		this.zip = zip;
 	}
 
@@ -53,13 +50,6 @@ public class Address {
 		this.city = city;
 	}
 
-	public String getState() {
-		return state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
 
 	public String getZip() {
 		return zip;
@@ -79,8 +69,10 @@ public class Address {
 
 	@Override
 	public String toString() {
-		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", state=" + state + ", zip=" + zip
-				+ ", user=" + user + "]";
+		return "Address [id=" + id + ", street=" + street + ", city=" + city + ", zip=" + zip + ", user=" + user + "]";
 	}
+
+	
+	
 
 }

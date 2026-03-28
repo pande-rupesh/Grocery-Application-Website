@@ -49,36 +49,48 @@
 		</div>
 
 		<div class="nav-signin">
-		<th:block th:if="${user==null}">
-			<i class="fa-solid fa-circle-user"></i><span>Account</span>
-			<!-- Dropdown menu -->
-			<div class="dropdown">
-				<ul>
-					<li><a href="/signin">Login/Sign In</a></li>
-					<li><a href="/register">Register/Sign Up</a></li>
-					<li><a href="#">My Orders</a></li>
-					<li><a href="#">Help</a></li>
-				</ul>
-			</div>
+			<th:block th:if="${user==null}">
+				<i class="fa-solid fa-circle-user"></i>
+				<span>Account</span>
+				<!-- Dropdown menu -->
+				<div class="dropdown">
+					<ul>
+						<li><a href="/signin">Login/Sign In</a></li>
+						<li><a href="/register">Register/Sign Up</a></li>
+						<li><a href="#">My Orders</a></li>
+						<li><a href="#">Help</a></li>
+					</ul>
+				</div>
 			</th:block>
-			
+
 			<th:block th:if="${user!=null}">
-			<i class="fa-solid fa-circle-user"></i><span>[[${user.name}]]</span>
-			<!-- Dropdown menu -->
-			<div class="dropdown">
-				<ul>
-					<li><a href="#">Update Profile</a></li>
-					<li><a href="#">My Orders</a></li>
-					<li><a href="#">Help</a></li>
-					<li><a href="/logout">Logout</a></li>
-				</ul>
-			</div>
+				<i class="fa-solid fa-circle-user"></i>
+				<span>[[${user.name}]]</span>
+				<!-- Dropdown menu -->
+				<div class="dropdown">
+					<ul>
+						<li><a href="#">Update Profile</a></li>
+						<li><a href="#">My Orders</a></li>
+						<li><a href="#">Help</a></li>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</div>
 			</th:block>
 		</div>
 
-		<div class="nav-cart ">
-			<i class="fa-solid fa-cart-shopping"></i> <span>Cart</span>
-		</div>
+
+		<th:block th:if="${user != null}">
+			<a th:href="@{/cart/{uid}(uid=${user.id})}" class="nav-cart"> <i
+				class="fa-solid fa-cart-shopping"></i> <span>Cart</span>
+			</a>
+		</th:block>
+
+		<th:block th:unless="${user != null}">
+			<a th:href="@{/signin}" class="nav-cart"> <i
+				class="fa-solid fa-cart-shopping"></i> <span>Cart</span>
+			</a>
+		</th:block>
+
 	</div>
 	<div th:replace="${content}"></div>
 
